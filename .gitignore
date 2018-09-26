@@ -113,6 +113,4 @@ Backup*/
 UpgradeLog*.XML
 
 project.lock.json
-Properties/AssemblyInfo.cs
-Package.appxmanifest
 /BundleArtifacts
