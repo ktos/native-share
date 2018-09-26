@@ -6,10 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="400" Height="700" MaxWidth="400" MaxHeight="700">
+    Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" Width="400" Height="700" MaxWidth="400" MaxHeight="700">
 
-    <Grid>
+    <StackPanel>
         <TextBlock x:Name="uri" />
-        <Button Click="Button_Click" Content="Kliknij mnie" HorizontalAlignment="Center" Margin="0,229,0,0" VerticalAlignment="Top" />
-    </Grid>
+        <!--<Button Click="ShareUri" Content="Kliknij mnie" HorizontalAlignment="Center" Margin="0,229,0,0" VerticalAlignment="Top" />-->
+    </StackPanel>
 </Page>

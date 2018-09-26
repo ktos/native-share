@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NativeShare.UWP.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,30 +25,12 @@ namespace NativeShare.UWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private string data;
+        private ShareManager shareManager;
 
         public MainPage()
         {
             this.InitializeComponent();
-        }
-        private void Dtm_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
-        {
-            args.Request.Data.Properties.Title = "Native Share URI";
-            args.Request.Data.SetWebLink(new Uri(data));
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var dtm = DataTransferManager.GetForCurrentView();
-            dtm.DataRequested += Dtm_DataRequested;
-            dtm.TargetApplicationChosen += Dtm_TargetApplicationChosen;
-
-            DataTransferManager.ShowShareUI(new ShareUIOptions() { Theme = ShareUITheme.Dark });
-        }
-
-        private void Dtm_TargetApplicationChosen(DataTransferManager sender, TargetApplicationChosenEventArgs args)
-        {
-            
+            shareManager = new ShareManager();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -59,8 +42,7 @@ namespace NativeShare.UWP
 
                 if (w.Count == 1 && w[0].Name == "value")
                 {
-                    data = w[0].Value;
-                    Button_Click(null, null);
+                    shareManager.Share(w[0].Value, ShareManager.UriToDataType(args.Uri.AbsolutePath));
                 }
             }
         }
