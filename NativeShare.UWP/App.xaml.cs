@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +31,38 @@ namespace NativeShare.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (rootFrame == null)
+            {
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
+
+                rootFrame.NavigationFailed += OnNavigationFailed;
+
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
+            }
+
+            if (rootFrame.Content == null)
+            {
+                ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(200, 100));
+                ApplicationView.PreferredLaunchViewSize = new Size(400, 700);
+                ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+            }
+
+            var e = (args.Kind == ActivationKind.Protocol) ? args as ProtocolActivatedEventArgs : null;
+            rootFrame.Navigate(typeof(MainPage), e);
+
+            Window.Current.Activate();
         }
 
         /// <summary>
@@ -68,7 +101,11 @@ namespace NativeShare.UWP
                     // parameter
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);
                 }
-                // Ensure the current window is active
+
+                ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(200, 100));
+                ApplicationView.PreferredLaunchViewSize = new Size(400, 700);
+                ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+
                 Window.Current.Activate();
             }
         }
