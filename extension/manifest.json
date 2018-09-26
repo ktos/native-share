@@ -1,0 +1,39 @@
+{
+  "description": "Adds icon to the toolbar sending the current tab url to the companion Windows 10 app, which is launching native Windows 10 Share dialog",
+  "manifest_version": 2,
+  "name": "native-share",
+  "version": "1.0",
+  "homepage_url": "https://github.com/ktos/native-share",
+  "icons": {
+    "48": "icons/48.png",
+    "96": "icons/96.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png",
+      "48": "icons/48.png"
+    },
+    "theme_icons": [
+      {
+        "light": "icons/light16.png",
+        "dark": "icons/dark16.png",
+        "size": 16
+      },
+      {
+        "light": "icons/light32.png",
+        "dark": "icons/dark32.png",
+        "size": 32
+      }
+    ]
+  },
+  "permissions": [
+    "<all_urls>",    
+    "activeTab"
+  ]
+}
