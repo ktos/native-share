@@ -30,6 +30,9 @@ namespace NativeShare.UWP
     public sealed partial class MainPage : Page
     {
         private ShareManager shareManager;
+        private string data;
+        private DataType dataType;
+        private DispatcherTimer dt;
 
         public MainPage()
         {
@@ -39,13 +42,14 @@ namespace NativeShare.UWP
             shareManager.ShareTargetChosen += ShareManager_ShareTargetChosen;
 
             Window.Current.SizeChanged += Current_SizeChanged;
+
+            dt = new DispatcherTimer();
+            dt.Interval = new TimeSpan(0, 0, 4);
+            dt.Tick += (_, __) => Application.Current.Exit();
         }
 
         private void ShareManager_ShareTargetChosen(object sender, EventArgs e)
-        {            
-            var dt = new DispatcherTimer();
-            dt.Interval = new TimeSpan(0, 0, 4);
-            dt.Tick += (_, __) => Application.Current.Exit();
+        {
             dt.Start();
         }
 
@@ -55,20 +59,19 @@ namespace NativeShare.UWP
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
-        {            
+        {
             var args = e.Parameter as ProtocolActivatedEventArgs;
             if (args != null)
             {
                 var w = new WwwFormUrlDecoder(args.Uri.Query);
 
-                if (args.Uri.LocalPath == "uri" && w.Count == 1 && w[0].Name == "value")
+                if (w.Count == 1 && w[0].Name == "value")
                 {
-                    shareManager.Share(w[0].Value, ShareManager.UriToDataType(args.Uri.AbsolutePath));
-                }
+                    var path = (args.Uri.AbsoluteUri.StartsWith("nativeshare://")) ? args.Uri.Host : args.Uri.AbsolutePath;                    
+                    data = w[0].Value;
+                    dataType = ShareManager.UriToDataType(path);
 
-                if (args.Uri.LocalPath == "text" && w.Count == 1 && w[0].Name == "value")
-                {
-                    shareManager.Share(w[0].Value, ShareManager.UriToDataType(args.Uri.AbsolutePath));
+                    shareManager.Share(data, dataType);
                 }
 
                 help.Visibility = Visibility.Collapsed;
@@ -83,6 +86,12 @@ namespace NativeShare.UWP
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+        }
+
+        private void OpenAgain(object sender, RoutedEventArgs e)
+        {
+            dt.Stop();
+            shareManager.Share(data, dataType);
         }
     }
 }

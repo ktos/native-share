@@ -113,4 +113,5 @@ Backup*/
 UpgradeLog*.XML
 
 project.lock.json
-/BundleArtifacts
+/*/BundleArtifacts
+_pkginfo.txt
