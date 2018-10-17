@@ -6,9 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" Width="400" Height="700" MaxWidth="400" MaxHeight="700">
+    Background="{ThemeResource SystemControlAltMediumLowAcrylicWindowMediumBrush}" Width="400" Height="700" MaxWidth="400" MaxHeight="700">
 
     <StackPanel>
+        <ProgressRing Height="50" Width="150" Margin="150" IsActive="True" />
         <TextBlock x:Name="uri" />
         <!--<Button Click="ShareUri" Content="Kliknij mnie" HorizontalAlignment="Center" Margin="0,229,0,0" VerticalAlignment="Top" />-->
     </StackPanel>

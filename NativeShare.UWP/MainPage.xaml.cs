@@ -5,9 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +33,7 @@ namespace NativeShare.UWP
         public MainPage()
         {
             this.InitializeComponent();
+            ExtendAcrylicIntoTitleBar();
             shareManager = new ShareManager();
         }
 
@@ -45,6 +49,15 @@ namespace NativeShare.UWP
                     shareManager.Share(w[0].Value, ShareManager.UriToDataType(args.Uri.AbsolutePath));
                 }
             }
+        }
+
+        // Extend acrylic into the title bar.
+        private void ExtendAcrylicIntoTitleBar()
+        {
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
     }
 }
