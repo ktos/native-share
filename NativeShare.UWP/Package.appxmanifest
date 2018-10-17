@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="38271ktos.info.NativeShare" Publisher="CN=5F05445E-DEFC-4B4F-B616-2FA9F0AF258C" Version="0.9.0.0" />
+  <Identity Name="38271ktos.info.NativeShare" Publisher="CN=5F05445E-DEFC-4B4F-B616-2FA9F0AF258C" Version="0.9.1.0" />
   <mp:PhoneIdentity PhoneProductId="7acb7d22-ad36-4794-8f6d-036ab9e64eb2" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>NativeShare</DisplayName>
