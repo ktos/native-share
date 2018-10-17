@@ -6,11 +6,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource SystemControlAltMediumLowAcrylicWindowMediumBrush}" Width="400" Height="700" MaxWidth="400" MaxHeight="700">
+    Background="{ThemeResource SystemControlAltMediumLowAcrylicWindowMediumBrush}" Width="400" Height="700">
 
     <StackPanel>
         <ProgressRing Height="50" Width="150" Margin="150" IsActive="True" />
-        <TextBlock x:Name="uri" />
-        <!--<Button Click="ShareUri" Content="Kliknij mnie" HorizontalAlignment="Center" Margin="0,229,0,0" VerticalAlignment="Top" />-->
+        
+        <StackPanel x:Name="shareFinish" Visibility="Collapsed">
+            <TextBlock Style="{ThemeResource SubheaderTextBlockStyle}" Text="Sharing complete!" Margin="20,0" HorizontalAlignment="Center" />
+            <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Margin="20" Text="You can close this application now (or it should close automatically in a few seconds)" HorizontalAlignment="Center" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" />
+        </StackPanel>
+
+        <StackPanel x:Name="help">
+            <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Margin="20" Text="This application is not meant to be run directly. It gives you a new URI to run from any other application which will launch this screen along with native Share dialog so you can share things from different apps not built for Windows 10 in mind." IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" />
+            <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Margin="20,0" Text="Try for yourself:" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" />
+            <HyperlinkButton Margin="20,0" Content="nativeshare:uri?value=http%3A%2F%2Fexample.com" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" NavigateUri="nativeshare:uri?value=http%3A%2F%2Fexample.com" />
+            <HyperlinkButton Margin="20,0" Content="nativeshare:text?value=Some%20example%20text" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" NavigateUri="nativeshare:text?value=Some%20example%20text" />
+        </StackPanel>
     </StackPanel>
 </Page>

@@ -45,7 +45,7 @@ namespace NativeShare.UWP
 
             if (rootFrame.Content == null)
             {
-                ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(200, 100));
+                ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(400, 700));
                 ApplicationView.PreferredLaunchViewSize = new Size(400, 700);
                 ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             }
@@ -93,7 +93,7 @@ namespace NativeShare.UWP
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);
                 }
 
-                ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(200, 100));
+                ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(400, 700));
                 ApplicationView.PreferredLaunchViewSize = new Size(400, 700);
                 ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
 

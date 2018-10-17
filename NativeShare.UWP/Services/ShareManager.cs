@@ -20,6 +20,7 @@ namespace NativeShare.UWP.Services
             switch (uri)
             {
                 case "uri": return DataType.Uri;
+                case "text": return DataType.Text;
                 default: return DataType.Text;
             }
         }
