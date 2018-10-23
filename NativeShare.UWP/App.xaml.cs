@@ -6,6 +6,8 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
 
 namespace NativeShare.UWP
 {
@@ -22,6 +24,8 @@ namespace NativeShare.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            AppCenter.Start("93093dfa-642e-42dd-a29a-c4540fa4504a", typeof(Analytics));
         }
 
         protected override void OnActivated(IActivatedEventArgs args)
