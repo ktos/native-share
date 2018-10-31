@@ -2,6 +2,7 @@ NativeShare
 ===========
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ktos/DjToKey/devel/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/ktos/native-share.svg)]()
+[![Build status](https://build.appcenter.ms/v0.1/apps/b989a804-4671-4d18-8677-cd908c82c666/branches/master/badge)](https://appcenter.ms)
 
 ![Project logo](https://raw.githubusercontent.com/ktos/native-share/master/extension/icons/96.png) 
 
